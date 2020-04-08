@@ -1,4 +1,6 @@
-#include <string>
+#ifndef BOARD_H
+#define BOARD_H
+
 #include <iostream>
 
 // This class defines an object represting a 15-puzzle board.
@@ -34,3 +36,5 @@ private:
     int tiles[4][4];
     int blankX, blankY;
 };
+
+#endif

@@ -1,4 +1,5 @@
 #include "../include/Board.cpp"
+#include "../include/AStar.cpp"
 
 #include <iostream>
 
