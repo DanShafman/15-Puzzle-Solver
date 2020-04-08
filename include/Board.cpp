@@ -20,8 +20,7 @@ bool Board::shiftUp() {
     // Not possible if blank space is at the bottom.
     if (blankX == 3) {
         return false;
-    }
-
+    
     tiles[blankX][blankY] = tiles[blankX + 1][blankY];
     tiles[blankX + 1][blankY] = 0;
     blankX++;
