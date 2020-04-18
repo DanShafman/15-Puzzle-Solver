@@ -11,21 +11,16 @@ int main() {
     Board b(testBoard);
     Board c(testBoard);
     cout << b << endl;
-    cout << (b == c) << endl;
 
     b.shiftUp();
-    // cout << b << endl;
+    cout << b << endl;
 
-    b.shiftUp();
-    // cout << b << endl;
+    b.shiftLeft();
+    cout << b << endl;
 
-    b.shiftUp();
-    // cout << b << endl;
+    b.shiftRight();
+    cout << b << endl;
 
-    b.shiftUp();
-    // cout << b << endl;
-
-    // cout << b[3][1] << endl;
-
-    cout << (b == c) << endl;
+    b.shiftDown();
+    cout << b << endl;
 }

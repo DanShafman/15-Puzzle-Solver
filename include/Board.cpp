@@ -16,6 +16,32 @@ Board::Board(int inputTiles[4][4]) {
     }
 }
 
+bool Board::shiftLeft() {
+    // Not possible if blank space is at the right.
+    if (blankY == 3) {
+        return false;
+    }
+    
+    tiles[blankX][blankY] = tiles[blankX][blankY + 1];
+    tiles[blankX][blankY + 1] = 0;
+    blankY++;
+
+    return true;
+}
+
+bool Board::shiftRight() {
+    // Not possible if blank space is at the left.
+    if (blankY == 0) {
+        return false;
+    }
+    
+    tiles[blankX][blankY] = tiles[blankX][blankY - 1];
+    tiles[blankX][blankY - 1] = 0;
+    blankY--;
+
+    return true;
+}
+
 bool Board::shiftUp() {
     // Not possible if blank space is at the bottom.
     if (blankX == 3) {
@@ -25,6 +51,19 @@ bool Board::shiftUp() {
     tiles[blankX][blankY] = tiles[blankX + 1][blankY];
     tiles[blankX + 1][blankY] = 0;
     blankX++;
+
+    return true;
+}
+
+bool Board::shiftDown() {
+    // Not possible if blank space is at the top.
+    if (blankX == 0) {
+        return false;
+    }
+    
+    tiles[blankX][blankY] = tiles[blankX - 1][blankY];
+    tiles[blankX - 1][blankY] = 0;
+    blankX--;
 
     return true;
 }
