@@ -2,6 +2,7 @@
 #define BOARD_H
 
 #include <iostream>
+#include <utility>
 
 // This class defines an object represting a 15-puzzle board.
 class Board {
@@ -19,12 +20,17 @@ public:
     bool shiftUp();
     bool shiftDown();
 
-    // Indexing operator returns the row specified by index, in an int array.
-    int* operator [] (int index);
+    // Returns the location of a particular tile in the form of (x, y). Returns
+    // (-1, -1) if an invalid tile is queried.
+    std::pair<int, int> tileLocation(int tile) const;
 
-    // Comarison operator for two Boards. Returns true if the nummbers at each
+    // Indexing operator returns the row specified by index, in an int array.
+    const int* operator [] (int index) const;
+
+    // Comarison operators for two Boards. Equality true if the nummbers at each
     // position are the same.
-    bool operator == (const Board& rhs);
+    bool operator == (const Board& rhs) const;
+    bool operator != (const Board& rhs) const;
 
     // Output operator as defined for Board class. Prints the board in 4x4 
     // formation.
@@ -32,9 +38,12 @@ public:
 
 private:
     // The board itself is represented by a 4x4 integer array. The x and y 
-    // positions of the blank space are stored in blankX and blankY.
+    // positions of the blank space are stored in blankX and blankY. Note:
+    // x will refer to the vertical position of a tile, and y to the
+    // horizontal position.
     int tiles[4][4];
     int blankX, blankY;
+
 };
 
 #endif

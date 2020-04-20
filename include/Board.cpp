@@ -68,11 +68,23 @@ bool Board::shiftDown() {
     return true;
 }
 
-int* Board::operator [] (int index) {
+std::pair<int, int> Board::tileLocation(int tile) const {
+    for (int x = 0; x < 4; x++) {
+        for (int y = 0; y < 4; y++) {
+            if (tiles[x][y] == tile) {
+                return std::pair<int, int> (x, y);
+            }
+        }
+    }
+
+    return std::pair<int, int> (-1, -1);
+}
+
+const int* Board::operator [] (int index) const {
     return tiles[index];
 }   
 
-bool Board::operator == (const Board& rhs) {
+bool Board::operator == (const Board& rhs) const {
     for (int x = 0; x < 4; x++) {
         for (int y = 0; y < 4; y++) {
 
@@ -85,6 +97,10 @@ bool Board::operator == (const Board& rhs) {
     }
 
     return true;
+}
+
+bool Board::operator != (const Board& rhs) const {
+    return !(*this == rhs);
 }
 
 std::ostream& operator << (std::ostream& out, const Board& board) {
